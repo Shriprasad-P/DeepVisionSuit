@@ -1,0 +1,36 @@
+# DeepVision Suite - Dependencies
+# Core ML
+torch>=2.0.0
+torchvision>=0.15.0
+numpy>=1.24.0
+Pillow>=9.0.0
+
+# Dataset
+datasets>=2.14.0
+huggingface-hub>=0.16.0
+
+# Training Utilities
+tqdm>=4.65.0
+
+# Experiment Tracking
+wandb>=0.15.0
+
+# Visualization
+matplotlib>=3.7.0
+
+# API Server
+fastapi>=0.100.0
+uvicorn[standard]>=0.22.0
+python-multipart>=0.0.6
+
+# Export
+onnx>=1.14.0
+onnxruntime>=1.15.0
+onnxscript>=0.1.0
+
+# Testing
+pytest>=7.4.0
+flake8>=6.0.0
+
+# Config
+pyyaml>=6.0.0

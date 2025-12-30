@@ -1,0 +1,45 @@
+# Training Configuration for DeepVision
+# =====================================
+
+model:
+  architecture: "TinyCNN" # Options: TinyCNN, ResNet50, EfficientNet, ViT
+  num_classes: 200
+  pretrained: false
+
+training:
+  epochs: 10
+  batch_size: 64
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  scheduler: "cosine" # Options: cosine, step, plateau
+
+  # Early stopping
+  early_stopping:
+    enabled: true
+    patience: 5
+    min_delta: 0.001
+
+data:
+  dataset: "zh-plus/tiny-imagenet"
+  image_size: 64
+  num_workers: 4
+
+  # Augmentation
+  augmentation:
+    horizontal_flip: true
+    random_crop: true
+    color_jitter: true
+
+checkpointing:
+  save_best: true
+  save_last: true
+  checkpoint_dir: "checkpoints/"
+
+wandb:
+  enabled: true
+  project: "deepvision-tinycnn"
+  entity: null # Your W&B username or team name
+  tags: ["tinycnn", "tiny-imagenet", "baseline"]
+
+seed: 42
+device: "auto" # Options: auto, cuda, mps, cpu
