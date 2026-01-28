@@ -12,6 +12,8 @@ training:
   learning_rate: 0.001
   weight_decay: 0.0001
   scheduler: "cosine" # Options: cosine, step, plateau
+  amp: true
+  clip_grad_norm: 1.0
 
   # Early stopping
   early_stopping:
