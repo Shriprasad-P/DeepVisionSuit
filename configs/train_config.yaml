@@ -3,7 +3,7 @@
 
 model:
   architecture: "TinyCNN" # Options: TinyCNN, ResNet50, EfficientNet, ViT
-  num_classes: 200
+  num_classes: 10
   pretrained: false
 
 training:
@@ -22,8 +22,8 @@ training:
     min_delta: 0.001
 
 data:
-  dataset: "zh-plus/tiny-imagenet"
-  image_size: 64
+  dataset: "cifar10"
+  image_size: 32
   num_workers: 4
 
   # Augmentation

@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DeepVision Suite | Neural Network Dashboard</title>
-    <meta name="description" content="Interactive dashboard for DeepVision CNN - Visualize, analyze, and deploy your TinyCNN model trained on Tiny-ImageNet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <meta name="description"
+        content="Interactive dashboard for DeepVision CNN - Visualize, analyze, and deploy your TinyCNN model trained on Tiny-ImageNet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <!-- Particle Background -->
     <div class="particle-container" id="particles"></div>
-    
+
     <!-- Gradient Orbs -->
     <div class="gradient-orb orb-1"></div>
     <div class="gradient-orb orb-2"></div>
     <div class="gradient-orb orb-3"></div>
-    
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-brand">
@@ -24,11 +29,13 @@
                 <svg viewBox="0 0 40 40" width="40" height="40">
                     <defs>
                         <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#6366f1"/>
-                            <stop offset="100%" style="stop-color:#ec4899"/>
+                            <stop offset="0%" style="stop-color:#6366f1" />
+                            <stop offset="100%" style="stop-color:#ec4899" />
                         </linearGradient>
                     </defs>
-                    <path d="M20 4L4 12v16l16 8 16-8V12L20 4zm0 4l12 6-12 6-12-6 12-6zm-12 9l12 6v10l-12-6V17zm24 0v10l-12 6V23l12-6z" fill="url(#logoGradient)"/>
+                    <path
+                        d="M20 4L4 12v16l16 8 16-8V12L20 4zm0 4l12 6-12 6-12-6 12-6zm-12 9l12 6v10l-12-6V17zm24 0v10l-12 6V23l12-6z"
+                        fill="url(#logoGradient)" />
                 </svg>
             </div>
             <span class="nav-title">DeepVision</span>
@@ -61,8 +68,8 @@
                     Unlocking the Black Box of Convolutional Neural Networks
                 </p>
                 <p class="hero-description">
-                    A comprehensive image classification system built with PyTorch, featuring a custom ResNet-style 
-                    architecture trained on Tiny-ImageNet (200 classes). Explore model interpretability with 
+                    A comprehensive image classification system built with PyTorch, featuring a custom ResNet-style
+                    architecture trained on Tiny-ImageNet (200 classes). Explore model interpretability with
                     Grad-CAM, feature maps, and learned filter visualizations.
                 </p>
                 <div class="hero-stats">
@@ -152,7 +159,7 @@
                 </h2>
                 <p class="section-subtitle">TinyCNN: A ResNet-Style Convolutional Neural Network</p>
             </div>
-            
+
             <div class="architecture-container">
                 <div class="architecture-diagram">
                     <div class="arch-flow">
@@ -213,7 +220,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="residual-block-detail">
                     <h3>Residual Block Structure</h3>
                     <div class="residual-flow">
@@ -321,9 +328,11 @@
                 <div class="viz-panel active" id="architecture-viz">
                     <div class="viz-card">
                         <h3>Model Architecture Diagram</h3>
-                        <p class="viz-desc">Visual representation of the TinyCNN architecture with layer dimensions and connections.</p>
+                        <p class="viz-desc">Visual representation of the TinyCNN architecture with layer dimensions and
+                            connections.</p>
                         <div class="viz-image-container">
-                            <img src="../visualizations/architecture_diagram.png" alt="TinyCNN Architecture" class="viz-image">
+                            <img src="/visualizations/architecture_diagram.png" alt="TinyCNN Architecture"
+                                class="viz-image">
                         </div>
                     </div>
                 </div>
@@ -331,9 +340,10 @@
                 <div class="viz-panel" id="filters-viz">
                     <div class="viz-card">
                         <h3>First Layer Convolutional Filters</h3>
-                        <p class="viz-desc">The learned 3×3 filters from the first convolutional layer. These detect basic features like edges, colors, and textures.</p>
+                        <p class="viz-desc">The learned 3×3 filters from the first convolutional layer. These detect
+                            basic features like edges, colors, and textures.</p>
                         <div class="viz-image-container">
-                            <img src="../visualizations/conv1_filters.png" alt="Conv1 Filters" class="viz-image">
+                            <img src="/visualizations/conv1_filters.png" alt="Conv1 Filters" class="viz-image">
                         </div>
                     </div>
                 </div>
@@ -341,9 +351,10 @@
                 <div class="viz-panel" id="features-viz">
                     <div class="viz-card">
                         <h3>Feature Map Activations</h3>
-                        <p class="viz-desc">Visualization of how features are extracted at different layers. Lower layers capture details, deeper layers capture high-level concepts.</p>
+                        <p class="viz-desc">Visualization of how features are extracted at different layers. Lower
+                            layers capture details, deeper layers capture high-level concepts.</p>
                         <div class="viz-image-container">
-                            <img src="../visualizations/feature_maps_0.png" alt="Feature Maps" class="viz-image">
+                            <img src="/visualizations/feature_maps_0.png" alt="Feature Maps" class="viz-image">
                         </div>
                     </div>
                 </div>
@@ -351,9 +362,10 @@
                 <div class="viz-panel" id="gradcam-viz">
                     <div class="viz-card">
                         <h3>Grad-CAM Attention Maps</h3>
-                        <p class="viz-desc">Gradient-weighted Class Activation Mapping shows exactly which parts of the image the model focused on for its prediction.</p>
+                        <p class="viz-desc">Gradient-weighted Class Activation Mapping shows exactly which parts of the
+                            image the model focused on for its prediction.</p>
                         <div class="viz-image-container">
-                            <img src="../visualizations/gradcam_visualization.png" alt="Grad-CAM" class="viz-image">
+                            <img src="/visualizations/gradcam_visualization.png" alt="Grad-CAM" class="viz-image">
                         </div>
                     </div>
                 </div>
@@ -400,7 +412,7 @@
                             <span class="time-value">-- ms</span>
                         </div>
                     </div>
-                    
+
                     <div class="top-prediction" id="topPrediction">
                         <div class="prediction-class">Class ID: --</div>
                         <div class="prediction-confidence">
@@ -577,4 +589,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>

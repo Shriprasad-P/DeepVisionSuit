@@ -115,7 +115,9 @@ class _DatasetTransform:
         self.transform = transform
 
     def __call__(self, examples):
-        examples["pixel_values"] = [self.transform(image.convert("RGB")) for image in examples["image"]]
+        # Handle different column names (e.g., 'image' for TinyImageNet, 'img' for CIFAR-10)
+        img_key = "image" if "image" in examples else "img"
+        examples["pixel_values"] = [self.transform(image.convert("RGB")) for image in examples[img_key]]
         return examples
 
 
@@ -144,9 +146,21 @@ def prepare_dataloaders(config: Dict[str, Any]) -> Tuple[DataLoader, DataLoader]
         print(f"Error loading dataset '{dataset_name}': {exc}")
         raise
 
+    # Determine validation split name
+    if "valid" in dataset:
+        val_split = "valid"
+    elif "validation" in dataset:
+        val_split = "validation"
+    elif "test" in dataset:
+        val_split = "test"
+    else:
+        raise ValueError(f"Could not find validation split in dataset. Available keys: {list(dataset.keys())}")
+    
+    print(f"Using '{val_split}' as validation split.")
+
     train_transform, val_transform = build_transforms(image_size, data_cfg.get("augmentation", {}))
     attach_transforms(dataset["train"], train_transform)
-    attach_transforms(dataset["valid"], val_transform)
+    attach_transforms(dataset[val_split], val_transform)
 
     loader_kwargs = dict(
         batch_size=batch_size,
@@ -158,7 +172,7 @@ def prepare_dataloaders(config: Dict[str, Any]) -> Tuple[DataLoader, DataLoader]
         loader_kwargs["persistent_workers"] = True
 
     train_loader = DataLoader(dataset["train"], shuffle=True, drop_last=False, **loader_kwargs)
-    val_loader = DataLoader(dataset["valid"], shuffle=False, drop_last=False, **loader_kwargs)
+    val_loader = DataLoader(dataset[val_split], shuffle=False, drop_last=False, **loader_kwargs)
 
     return train_loader, val_loader
 

@@ -8,6 +8,7 @@ API Docs: http://localhost:8000/docs
 """
 
 from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from contextlib import asynccontextmanager
@@ -23,6 +24,7 @@ import time
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from train import TinyCNN
+from fastapi.staticfiles import StaticFiles
 
 # Global model variable
 model = None
@@ -47,7 +49,9 @@ async def lifespan(app: FastAPI):
     
     # Load model
     model = TinyCNN(num_classes=200)
-    model_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'best_tinycnn.pth')
+    # Get project root correctly
+    project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    model_path = os.path.join(project_root, 'best_tinycnn.pth')
     
     if os.path.exists(model_path):
         model.load_state_dict(torch.load(model_path, map_location=device, weights_only=True))
@@ -89,10 +93,22 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Mount Static Files
+# We need to get the absolute path to the project root
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-@app.get("/")
-async def root():
-    """Root endpoint with API info."""
+# Serve visualizations
+app.mount("/visualizations", StaticFiles(directory=os.path.join(project_root, "visualizations")), name="visualizations")
+
+# Serve dashboard (must be mounted last to avoid capturing API routes if mounted at root, 
+# but FastAPI routes defined before check take precedence)
+# properly importing StaticFiles above in the replacement chunk
+
+
+
+@app.get("/api/info")
+async def api_info():
+    """API information endpoint."""
     return {
         "name": "DeepVision API",
         "version": "1.0.0",
@@ -103,6 +119,10 @@ async def root():
             "docs": "/docs"
         }
     }
+
+# Mount dashboard at root (captures all other routes)
+app.mount("/", StaticFiles(directory=os.path.join(project_root, "dashboard"), html=True), name="dashboard")
+
 
 
 @app.get("/health")
