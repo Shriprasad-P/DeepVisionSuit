@@ -2,9 +2,9 @@
 
 
 ## Team Members: 
-**1. Nuthalapati sai Bharath Kumar**
-**2. Pranjal Prakash Pandey**
-**3. Shriprasad Patil**
+- **1. Nuthalapati sai Bharath Kumar**
+- **2. Pranjal Prakash Pandey**
+- **3. Shriprasad Patil**
 
 
 A comprehensive deep learning image classification system built with PyTorch, featuring model interpretability tools and MLOps practices.
