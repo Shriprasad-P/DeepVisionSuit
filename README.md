@@ -1,5 +1,12 @@
 # 🧠 DeepVision Suite
 
+
+## Team Members: 
+**1. Nuthalapati sai Bharath Kumar**
+**2. Pranjal Prakash Pandey**
+**3. Shriprasad Patil**
+
+
 A comprehensive deep learning image classification system built with PyTorch, featuring model interpretability tools and MLOps practices.
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
