@@ -18,6 +18,7 @@ A comprehensive deep learning image classification system built with PyTorch, fe
 DeepVision Suite is a production-ready image classification system trained on the **Tiny-ImageNet** dataset (200 classes). It goes beyond just achieving high accuracy—it focuses on **Model Interpretability** and includes tools for understanding *why* the model makes certain decisions.
 
 ### Key Features
+
 - 🏗️ **Custom ResNet Architecture** with residual connections
 - 📊 **Model Visualization Suite** (Grad-CAM, Feature Maps, Filter Visualization)
 - 🔄 **MLOps Integration** (W&B tracking, GitHub Actions CI/CD)
@@ -86,10 +87,11 @@ python visualize_model.py
 ```
 
 This creates:
-- **Architecture Diagram** - Network structure visualization
-- **Conv1 Filters** - Learned first-layer features
-- **Feature Maps** - Layer-by-layer activations
-- **Grad-CAM** - Class activation heatmaps
+
+- **Architecture Diagram** — Network structure visualization
+- **Conv1 Filters** — Learned first-layer features
+- **Feature Maps** — Layer-by-layer activations
+- **Grad-CAM** — Class activation heatmaps
 
 ## 🚀 Deployment
 
@@ -120,16 +122,18 @@ pytest tests/ -v
 ## 🏗️ Architecture
 
 The model uses a custom ResNet-style architecture with:
-- **Residual Connections** - Prevents vanishing gradients
-- **Batch Normalization** - Stabilizes training
-- **AdamW Optimizer** - Weight decay regularization
-- **Cosine Annealing LR** - Learning rate scheduling
+
+- **Residual Connections** — Prevents vanishing gradients
+- **Batch Normalization** — Stabilizes training
+- **AdamW Optimizer** — Weight decay regularization
+- **Cosine Annealing LR** — Learning rate scheduling
 
 ## 📈 Results
 
-Training on Tiny-ImageNet (200 classes, 64x64 images):
-- Dataset: 100,000 training / 10,000 validation images
-- Architecture: Custom ResNet with 4 residual blocks
+Training on Tiny-ImageNet (200 classes, 64×64 images):
+
+- **Dataset:** 100,000 training images / 10,000 validation images
+- **Architecture:** Custom ResNet with 4 residual blocks
 
 ## 🔮 Future Improvements
 
